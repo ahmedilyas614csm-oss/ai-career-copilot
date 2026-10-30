@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Copilot — Enhancv Style</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (for the PDF upload button styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">✨ AI Career Copilot</div>
+    <div class="score-pill">
+        <span class="score-label">ATS Match</span>
+        <span id="scoreBadge" class="score-badge">--%</span>
+    </div>
+</header>
+
+<main class="workspace">
+
+    <!-- LEFT: Editor Panel -->
+    <section class="editor-panel">
+        <div class="editor-inner">
+
+            <!-- Card 1: Job Description & PDF Upload -->
+            <div class="card">
+                <label class="card-label">Target Job Description</label>
+                <textarea id="jobDesc" rows="4" placeholder="Paste the job description here..."></textarea>
+                
+                <!-- PDF Upload Section -->
+                <div class="mt-4 pt-4 border-t border-gray-100">
+                    <label class="card-label mb-2 block">Option 1: Upload Existing Resume (PDF)</label>
+                    <input type="file" id="pdfUpload" accept=".pdf" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer"/>
+                </div>
+            </div>
+
+            <!-- Card 2: Summary -->
+            <div class="card">
+                <div class="card-header">
+                    <label class="card-label">Professional Summary</label>
+                    <button onclick="magicWrite('summary')" class="magic-btn">✨ Magic Write</button>
+                </div>
+                <textarea id="summaryInput" rows="3" placeholder="Your summary..."></textarea>
+            </div>
+
+            <!-- Card 3: Experience -->
+            <div class="card">
+                <div class="card-header">
+                    <label class="card-label">Experience Bullets</label>
+                    <button onclick="magicWrite('bullets')" class="magic-btn">✨ Rewrite for Impact</button>
+                </div>
+                <textarea id="experienceInput" rows="6" placeholder="Your bullet points (one per line)..."></textarea>
+            </div>
+
+            <button onclick="tailorResume()" class="primary-btn" id="mainBtn">
+                <span id="btnText">🚀 Tailor Resume to Job</span>
+                <div id="spinner" class="loader hidden"></div>
+            </button>
+
+        </div>
+    </section>
+
+    <!-- RIGHT: Live Preview -->
+    <section class="preview-panel">
+        <div id="resumePreview" class="resume-paper">
+            <div class="preview-header">
+                <h1>John Doe</h1>
+                <p>Software Engineer</p>
+            </div>
+
+            <div class="preview-section">
+                <h2>Summary</h2>
+                <p id="previewSummary" class="preview-text italic">Your tailored summary will appear here...</p>
+            </div>
+
+            <div class="preview-section">
+                <h2>Experience</h2>
+                <ul id="previewExperience" class="preview-list">
+                    <li>Your tailored bullet points will appear here...</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Your Custom JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>

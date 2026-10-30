@@ -1,0 +1,188 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Topbar */
+.topbar {
+    height: 60px;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+.logo { font-weight: 700; font-size: 18px; color: #4f46e5; }
+.score-pill { display: flex; align-items: center; gap: 12px; }
+.score-label { font-size: 13px; color: #64748b; }
+.score-badge {
+    background: #e2e8f0;
+    color: #475569;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+.score-badge.good { background: #dcfce7; color: #15803d; }
+.score-badge.warn { background: #fee2e2; color: #b91c1c; }
+
+/* Layout */
+.workspace {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+}
+
+/* Editor Panel */
+.editor-panel {
+    background: #f8fafc;
+    overflow-y: auto;
+    padding: 24px;
+}
+.editor-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.card-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+textarea {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    transition: border 0.2s;
+    margin-top: 6px;
+}
+textarea:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+
+.magic-btn {
+    background: none;
+    border: none;
+    color: #4f46e5;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+.magic-btn:hover { background: #eef2ff; }
+
+.primary-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(79,70,229,0.3);
+    transition: transform 0.1s, background 0.2s;
+}
+.primary-btn:hover { background: #4338ca; }
+.primary-btn:active { transform: scale(0.98); }
+
+/* Loader */
+.loader {
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 0.8s linear infinite;
+}
+.hidden { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Preview Panel */
+.preview-panel {
+    background: #e2e8f0;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    padding: 40px 24px;
+}
+
+.resume-paper {
+    background: white;
+    width: 100%;
+    max-width: 700px;
+    min-height: 900px;
+    padding: 48px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.preview-header {
+    text-align: center;
+    border-bottom: 2px solid #4f46e5;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+.preview-header h1 { font-size: 28px; color: #1e293b; }
+.preview-header p { color: #4f46e5; font-weight: 500; }
+
+.preview-section { margin-bottom: 24px; }
+.preview-section h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+.preview-text { color: #334155; }
+.preview-text.italic { font-style: italic; color: #94a3b8; }
+.preview-list { padding-left: 18px; color: #334155; }
+.preview-list li { margin-bottom: 6px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .workspace { grid-template-columns: 1fr; }
+    .preview-panel { display: none; }
+}
